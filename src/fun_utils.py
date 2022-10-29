@@ -19,7 +19,7 @@ def load_data(filename):
     y : ndarray
         the labels of each sample.
     """
-    #this was just done
+    # this was just done
     data = read_csv(filename)
     z = np.array(data)
     y = z[:, 0]
@@ -32,4 +32,18 @@ def split_data(x, y, tr_fraction=0.5):
     Split the data x, y into two random subsets
 
     """
-    pass
+    num_samples = x.shape[0]
+    num_training = int(num_samples * tr_fraction)
+    num_testing = num_samples - num_training
+
+    tr_index = np.zeros(num_samples, )
+    tr_index[:num_training] = 1
+    np.random.shuffle(tr_index)
+
+    xtr = x[tr_index == 1, :]
+    xts = x[tr_index == 0, :]
+
+    ytr = y[tr_index == 1]
+    yts = y[tr_index == 0]
+
+    return xtr, ytr, xts, yts
