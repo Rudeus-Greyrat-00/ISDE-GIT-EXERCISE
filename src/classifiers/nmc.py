@@ -1,5 +1,5 @@
 import numpy as np
-from sklearn.metrics.pairwise import euclidean_distances
+from sklearn.metrics.pairwise import euclidean_distances, pairwise_distances
 
 
 class NMC(object):
@@ -48,4 +48,11 @@ class NMC(object):
         self._centroids = centroids
 
     def predict(self, xts):
-        pass
+        if self._centroids is None:
+            raise ValueError("NMC is not fit")
+
+        distances = pairwise_distances(xts, self._centroids)
+
+        y = np.argmin(distances, axis=1)
+
+        return y
