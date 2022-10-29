@@ -32,7 +32,7 @@ def split_data(x, y, tr_fraction=0.5):
     Split the data x, y into two random subsets
 
     """
-    num_samples = x.size[1]
+    num_samples = x.shape[1]
     num_training = int(num_samples * tr_fraction)
     num_testing = num_samples - num_training
 
