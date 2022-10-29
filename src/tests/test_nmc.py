@@ -2,8 +2,8 @@ import numpy as np
 from os import path
 import unittest
 
-from src.fun_utils import load_data, split_data
-from src.classifiers import NMC
+from fun_utils import load_data, split_data
+from classifiers import NMC
 
 class TestNMC(unittest.TestCase):
 
@@ -41,14 +41,12 @@ class TestNMC(unittest.TestCase):
         assert xtr.shape[1] == self.x.shape[1]
         assert xts.shape[1] == self.x.shape[1]
 
-    @unittest.skip("not implemented yet")
     def test_fit(self):
         self.clf.fit(self.x, self.y)
         assert self.clf.centroids is not None
         assert self.clf.centroids.shape[0] == np.unique(self.y).size
         assert self.clf.centroids.shape[1] == self.x.shape[1]
 
-    @unittest.skip("not implemented yet")
     def test_predict(self):
         self.clf.fit(self.x, self.y)
         yc = self.clf.predict(self.x)
