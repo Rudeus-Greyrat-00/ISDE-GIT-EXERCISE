@@ -1,6 +1,8 @@
 from pandas import read_csv
 import numpy as np
 
+# important: mark directory src as root!
+
 
 def load_data(filename):
     """
